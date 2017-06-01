@@ -85,3 +85,10 @@ To Do:
 1) Add exception handling to the Python code
 2) Add a watchdog to the Raspberry
 3) Fix the cron email notifications
+
+Future Development (in no priority):
+1) GUI interface for setting persistent variables (could be local)
+2) Web interface for charting of data
+3) Possible move of data to database
+4) Add a paristolic pump for when have to be away for a while and need to refill the reservoir (Could be a separate board using Particle).
+5) Light control for controlable LEDs
