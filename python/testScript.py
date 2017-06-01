@@ -1,7 +1,7 @@
 #A script to test the functions of the OpenAg-MVP routines
 #Run this to validate code and that things are working correctly
 
-from photoCell import *
+from checkLight import *
 from si7021 import *
 from bookshelf import *
 
@@ -18,10 +18,10 @@ except (RuntimeError):
     print ("Failure to get Humidity")
 
 try:
-    print ("Execute getCellTime of photocell")    
-    print (getCellTime())
+    print ("Check Lights")    
+    print (checkLight())
 except (RuntimeError):
-    print ("Failure to get cell time")
+    print ("Failure in checkLight")
 
 try:
     print ("Get from Bookshelf")    
@@ -29,11 +29,5 @@ try:
 except (RuntimeError):    
     print ("Failure to get value for key")            
     
-try:
-    print ("Execute checkLightState - determine if lights on or off")    
-    print (checkLightState())
-except (RuntimeError):
-    print ("Failure to check lights")
-
 
 

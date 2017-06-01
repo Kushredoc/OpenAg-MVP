@@ -11,7 +11,7 @@ from si7021 import getTempC
 def adjustThermostat(temp):
     "Turn the fan on or off in relationship to target temperature"
     print ("Adjust Thermostat %s" %str(temp))
-    fanPin = 33
+    fanPin = 35
     targetTempKey = "targetTemp"
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)

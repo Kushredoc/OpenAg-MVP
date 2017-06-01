@@ -3,7 +3,7 @@
 #If the is a change, log the chanage
 #External module imports
 
-from photoCell import *
+from checkLight import *
 
 #cron job will check lights
-checkLightState()        
+checkLight()        
