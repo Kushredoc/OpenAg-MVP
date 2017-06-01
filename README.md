@@ -42,7 +42,10 @@ Pin Assignment:
 https://docs.particle.io/datasheets/raspberrypi-datasheet/#pin-out-diagram
 3 - SDA to si7021
 5 - SCL to si7021
-33 - GPIO13 fan control
+29 - (reserved for relay #4)
+31 - (reserved for relay #3)
+33 - (reserved for relay #2)
+35 - GPIO13 fan control (relay #1)
 37 - GPIO26 photocell input
 
 Build Activities
