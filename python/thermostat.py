@@ -15,7 +15,7 @@ def adjustThermostat(temp):
     targetTempKey = "targetTemp"
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(fanPin, GPIO.IN)
+    GPIO.setup(fanPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     fanOn = GPIO.input(fanPin)   
     targetTemp = takeOffShelf(targetTempKey)
     if temp > targetTemp:
@@ -28,15 +28,15 @@ def adjustThermostat(temp):
 def turnFanOn(fanPin):
     "Turn fan on"
     print ("Turn fan ON")
-    GPIO.setup(fanPin, GPIO.OUT)
+    GPIO.setup(fanPin, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
     GPIO.output(fanPin, GPIO.HIGH)
-    logData("Fan", "ON", '')
+    logData("Fan", "ON", "Current Temp: " + str(temp))
 
 def turnFanOff(fanPin):
     "Turn fan off"
     print ("Turn Fan OFF")
-    GPIO.setup(fanPin, GPIO.OUT)
+    GPIO.setup(fanPin, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
     GPIO.output(fanPin, GPIO.LOW)    
-    logData("Fan", "OFF", '')
+    logData("Fan", "OFF", "Current Temp: " + str(temp))
 
 adjustThermostat(getTempC())    
