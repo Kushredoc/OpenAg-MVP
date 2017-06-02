@@ -11,32 +11,40 @@ from si7021 import getTempC
 def adjustThermostat(temp):
     "Turn the fan on or off in relationship to target temperature"
     print ("Adjust Thermostat %s" %str(temp))
+
     fanPin = 35
+    currentFanOn = True
+    priorFanOnKey = "priorFanOn"
     targetTempKey = "targetTemp"
+    priorFanOn = takeOffShelf(priorFanOnKey)
+    targetTemp = takeOffShelf(targetTempKey)
+    print("Target Temp %s" %targetTemp)
+    
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(fanPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    fanOn = GPIO.input(fanPin)   
-    targetTemp = takeOffShelf(targetTempKey)
+#avoid switching pin state and messing up condition    
+#    GPIO.setup(fanPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+#    fanOn = GPIO.input(fanPin)
+    
     if temp > targetTemp:
-        if not fanOn:
-            turnFanOn(fanPin)
+        GPIO.setup(fanPin, GPIO.OUT)
+        GPIO.output(fanPin, GPIO.HIGH)
+        print("Fan On")
     else:
-        if fanOn:
-            turnFanOff(fanPin)
+        GPIO.setup(fanPin, GPIO.OUT)
+        GPIO.output(fanPin, GPIO.LOW)    
+        currentFanOn = False
+        print("Fan Off")
 
-def turnFanOn(fanPin):
-    "Turn fan on"
-    print ("Turn fan ON")
-    GPIO.setup(fanPin, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-    GPIO.output(fanPin, GPIO.HIGH)
-    logData("Fan", "ON", "Current Temp: " + str(temp))
+#separate reporting logic for issues during restart where flag not match reality
+    if currentFanOn != priorFanOn:
+        if currentFanOn:
+            logData("Fan", "ON", "Current Temp: " + str(temp))
+            print("Fan change - fan ON")
+        else:    
+            logData("Fan", "OFF", "Current Temp: " + str(temp))
+        putOnShelf(priorFanOnKey. currentFanOn)
+        print("Fan change - fan OFF")
 
-def turnFanOff(fanPin):
-    "Turn fan off"
-    print ("Turn Fan OFF")
-    GPIO.setup(fanPin, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
-    GPIO.output(fanPin, GPIO.LOW)    
-    logData("Fan", "OFF", "Current Temp: " + str(temp))
 
 adjustThermostat(getTempC())    

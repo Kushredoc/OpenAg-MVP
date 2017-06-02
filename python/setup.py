@@ -2,6 +2,8 @@
 
 from bookshelf import takeOffShelf, putOnShelf
 
-putOnShelf("targetTemp", 27)
+putOnShelf("targetTemp", 24)
 putOnShelf("lightOn", "0600")
 putOnShelf("lightOff", "2230")
+putOnShelf("priorFanOn", True)
+putOnShelf("priorLightOn", True)
