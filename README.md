@@ -85,9 +85,9 @@ Code follows the board number convention.
     - Scroll to the bottom of the file and type the following
 
 > */1 * * * * python /home/pi/python/thermostat.py
-*/5 * * * * python /home/pi/python/ambientLight.py
-*/20 * * * * python /home/pi/python/logSensors.py
-1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
+>*/5 * * * * python /home/pi/python/ambientLight.py
+>*/20 * * * * python /home/pi/python/logSensors.py
+>1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
 
 ## Bill of Materials:
 - Raspberry Pi
