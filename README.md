@@ -73,9 +73,8 @@ Code follows the board number convention.
     - Drag the sub-directory 'OpenAg-MVP to the 'Documents' directory
     - Drag the sub-directory 'python' to the 'pi' directory
 
-- initialized shelf with the persistent variables.  Run from the terminal, or open Python and run the file.
-
-> python /home/pi/python/setup.py
+- initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
+**NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
 
 - From a terminal, type:
 
