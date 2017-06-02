@@ -73,13 +73,13 @@ Code follows the board number convention.
     - Drag the sub-directory 'OpenAg-MVP to the 'Documents' directory
     - Drag the sub-directory 'python' to the 'pi' directory
 
-- Run from Terminal
-    - Load the crontab file with the jobs to run
-> /home/pi/Documents/OpenAg-MVP/cron_load.sh
-
 - initialized shelf with the persistent variables.  Run from the terminal, or open Python and run the file.
 
 > python /home/pi/python/setup.py
+
+- Run from Terminal
+    - Load the crontab file with the jobs to run
+> /home/pi/Documents/OpenAg-MVP/cron_load.sh
 
 ## Bill of Materials:
 - Raspberry Pi
