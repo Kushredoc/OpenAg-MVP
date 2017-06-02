@@ -77,9 +77,17 @@ Code follows the board number convention.
 
 > python /home/pi/python/setup.py
 
-- Run from Terminal
-    - Load the crontab file with the jobs to run
-> /home/pi/Documents/OpenAg-MVP/cron_load.sh
+- From a terminal, type:
+
+> crontab -e
+
+    - Select the second editor option
+    - Scroll to the bottom of the file and type the following
+
+> */1 * * * * python /home/pi/python/thermostat.py
+*/5 * * * * python /home/pi/python/ambientLight.py
+*/20 * * * * python /home/pi/python/logSensors.py
+1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
 
 ## Bill of Materials:
 - Raspberry Pi
