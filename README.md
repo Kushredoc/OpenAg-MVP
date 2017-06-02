@@ -1,6 +1,6 @@
 # OpenAg-MVP
 Code and instructions for building the 'brain' of the controled environment hydroponics unit.
-It is mostly a collection of python code that runs on a Raspberry Pi (or similar device).  See the OpenAg [forums](http://forum.openag.media.mit.edu/} for discussion and issues:
+It is mostly a collection of python code that runs on a Raspberry Pi (or similar device).  See the OpenAg [forums](http://forum.openag.media.mit.edu/) for discussion and issues:
 
 
 The MVP (Minimal Viable Product) is a simplified version of the MIT OpenAg Food Computer.
@@ -30,11 +30,13 @@ For more information on Cron [see:](https://docs.oracle.com/cd/E23824_01/html/82
 
 **Fan:**
 There are two fans, one for circulation and one for exhausting excess heat  These can run off the Raspberry's 5V or from a external 12V transformer
+
 **Temperature/Humidity Sensor**
-A si7021 sensor on an I2C bus is used for temperature and humidity.  See the following for instructions on use and wiring.
-https://learn.adafruit.com/adafruit-si7021-temperature-plus-humidity-sensor/overview
+A si7021 sensor on an I2C bus is used for temperature and humidity.  See the following for (instructions)[https://learn.adafruit.com/adafruit-si7021-temperature-plus-humidity-sensor/overview] on use and wiring.
+
 **Webcam**
 A standard USB camera is used for imaging (though the Raspberry Pi camera is an option).  See [here](https://www.raspberrypi.org/documentation/usage/webcams/) for instructions
+
 **Relay**
 A set of relays controled by GPIO pins is used to turn lights on and off (120V), and the exhaust fan (12V)
 
@@ -75,7 +77,7 @@ Code follows the board number convention.
     - Load the crontab file with the jobs to run
 > /home/pi/Documents/OpenAg-MVP/cron_load.sh
 
-    - initialized shelf with the persistent variables.  Run from the terminal, or open Python and run the file.
+- initialized shelf with the persistent variables.  Run from the terminal, or open Python and run the file.
 
 > python /home/pi/python/setup.py
 
