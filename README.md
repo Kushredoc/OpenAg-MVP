@@ -18,9 +18,8 @@ The Python is modular so additions and changes can easily be made without affect
     - Check Light (ambientLight.py)
     - Check Temperature (thermostat.py)
 
-shelf is used for persisting variables (target temperature, prior fan state, prior light state).  These variables must be initialized before the python code will correctly run, this is done by running:
-
-> python /home/pi/python/setup.py
+shelf is used for persisting variables (target temperature, prior fan state, prior light state).  These variables must be initialized before the python code will correctly run, this is done by running the Python file /home/pi/python.setup.py.
+**NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
 
 Data storage is in a csv formatted (without header) flat file (/home/pi/Documents/OpenAg-MVP/data.txt)
 
@@ -61,7 +60,7 @@ Code follows the board number convention.
     - wifi is established and connected
     - I2C has been enabled
 2. 32G SD card to hold data
-3. Sensors and relay are wired to the Pi (the software will run, even if not wired up)
+3. Sensors and relay are wired to the Pi.  If you try to run the code without sensors, some of it will error out (I/O Error, I noticed in the getTempC() function).  This will ripple up to error out the cron job for logSensorData.py.
 
 ### Software Build Steps
 
@@ -74,7 +73,6 @@ Code follows the board number convention.
     - Drag the sub-directory 'python' to the 'pi' directory
 
 - initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
-**NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
 
 - From a terminal, type:
 
