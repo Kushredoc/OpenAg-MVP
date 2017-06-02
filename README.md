@@ -72,22 +72,36 @@ Code follows the board number convention.
     - Drag the sub-directory 'OpenAg-MVP to the 'Documents' directory
     - Drag the sub-directory 'python' to the 'pi' directory
 
+- Make webcam.sh executable
+    - from the file manager, go to the /home/pi/Documents/OpenAg-MVP directory
+    - right click on webcam.sh and select Properties from the menu
+    - select the Permissions tab, and on the Execute drop-down select 'Anyone' and hit 'OK'
+
 - initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
+**NOTE** There needs to be an easier way to set-up cron for new people.  The slightest typo will cause it to either not run, or run with errors.  Google cron to see how to change the time settings.  These will get you going, but you will likely want to change them at some time in the future.
 
 - From a terminal, type:
 
 > crontab -e
 
 - Select the second editor option
-- Scroll to the bottom of the file and type the following
+- Scroll to the bottom of the file and type the following:
 
 > */1 * * * * python /home/pi/python/thermostat.py
 
+This checks the temperature and adjusts the fan every minute
+
 > */5 * * * * python /home/pi/python/ambientLight.py
+
+This checks the on/off times and adjusts the lights (if needed) every 5 minutes
 
 > */20 * * * * python /home/pi/python/logSensors.py
 
+This logs the temperature and humidity every 20 minutes
+
 > 1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
+
+This takes an image every hour between 6am and 10pm; avoiding pictures when the lights are out.
 
 ## Bill of Materials:
 - Raspberry Pi
@@ -100,6 +114,9 @@ Code follows the board number convention.
 1. Add exception handling to the Python code
 2. Add a watchdog to the Raspberry
 3. Fix the cron email notifications
+4. Automate the build process
+    - file movement (clone process?)
+    - crontab loading
 
 ## Future Development (in no priority):
 - GUI interface for setting persistent variables (could be local)
