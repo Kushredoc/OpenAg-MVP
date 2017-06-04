@@ -15,10 +15,11 @@ The Python is modular so additions and changes can easily be made without affect
 - Scheduling Control (cron)
     - Image capture (webcam.sh)
     - Log Sensors (logSensors.py)
-    - Check Light (ambientLight.py)
+    - Turn lights On (setLightOn.py)
+    _ Tirm lights Off (setLightOff.py)
     - Check Temperature (thermostat.py)
 
-shelf is used for persisting variables (target temperature, prior fan state, prior light state).  These variables must be initialized before the python code will correctly run, this is done by running the Python file /home/pi/python.setup.py.
+shelf is used for persisting variables (target temperature, prior fan state).  These variables must be initialized before the python code will correctly run, this is done by running the Python file /home/pi/python.setup.py.
 **NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
 
 Data storage is in a csv formatted (without header) flat file (/home/pi/Documents/OpenAg-MVP/data.txt)
@@ -91,9 +92,13 @@ Code follows the board number convention.
 
 This checks the temperature and adjusts the fan every minute
 
-> */5 * * * * python /home/pi/python/ambientLight.py
+> 0 6 * * * python /home/pi/python/setLightOn.py
 
-This checks the on/off times and adjusts the lights (if needed) every 5 minutes
+Turns lights on at 6AM (change for your needs)
+
+> 30 22 * * * python /home/pi/python/setLightOff.py
+
+Turns lights off at 10:30PM (change for your needs)
 
 > */20 * * * * python /home/pi/python/logSensors.py
 
