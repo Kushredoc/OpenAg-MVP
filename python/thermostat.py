@@ -19,6 +19,7 @@ def adjustThermostat(temp):
     priorFanOn = takeOffShelf(priorFanOnKey)
     targetTemp = takeOffShelf(targetTempKey)
     print("Target Temp %s" %targetTemp)
+    print("Current Temp: %s" %temp)
     
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
@@ -37,14 +38,21 @@ def adjustThermostat(temp):
         print("Fan Off")
 
 #separate reporting logic for issues during restart where flag not match reality
+    print ("CurrentFanOn: " + str(currentFanOn))
+    print ("PriorFanOn: " + str(priorFanOn))
     if currentFanOn != priorFanOn:
+        print ("Fans not equal")
         if currentFanOn:
             logData("Fan", "ON", "Current Temp: " + str(temp))
             print("Fan change - fan ON")
-        else:    
+        else:
             logData("Fan", "OFF", "Current Temp: " + str(temp))
-        putOnShelf(priorFanOnKey. currentFanOn)
-        print("Fan change - fan OFF")
+            print ("Fan change - fan OFF")
+            
+    putOnShelf(priorFanOnKey, currentFanOn)
+
+
+        
 
 
 adjustThermostat(getTempC())    
