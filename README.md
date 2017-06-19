@@ -17,7 +17,7 @@ The Python is modular so additions and changes can easily be made without affect
     - Log Sensors (logSensors.py)
     - Turn lights On (setLightOn.py)
     _ Tirm lights Off (setLightOff.py)
-    - Check Temperature (thermostat.py)
+    - Check Temperature (adjustThermostat.py)
 
 shelf is used for persisting variables (target temperature, prior fan state).  These variables must be initialized before the python code will correctly run, this is done by running the Python file /home/pi/python.setup.py.
 **NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
@@ -88,7 +88,7 @@ Code follows the board number convention.
 - Select the second editor option
 - Scroll to the bottom of the file and type the following:
 
-> */1 * * * * python /home/pi/python/thermostat.py
+> */1 * * * * python /home/pi/python/adjustThermostat.py
 
 This checks the temperature and adjusts the fan every minute
 
@@ -114,6 +114,10 @@ This takes an image every hour between 6am and 10pm; avoiding pictures when the 
 - SI7021 temperature/humidity sensor
 - Wire or jumpers
 - Relay
+
+## Testing:
+Individual files can be loaded and the functions called from the command line.  Follow the basic Python code testing processes.
+testScript.py will go through the main functions and run them.  There should be no exceptions, though you will see errors if the si7021 sensor is not correctly wired.
 
 ## To Do:
 1. Add exception handling to the Python code
