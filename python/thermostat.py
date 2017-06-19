@@ -51,8 +51,3 @@ def adjustThermostat(temp):
             
     putOnShelf(priorFanOnKey, currentFanOn)
 
-
-        
-
-
-adjustThermostat(getTempC())    

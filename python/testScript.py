@@ -3,20 +3,20 @@
 
 from si7021 import *
 from bookshelf import *
-from thermostat import *
+from adjustThermostat import *
 from setLightOn import *
 from setLightOff import *
 
 try:
     print ("Execute getTempC")
     print (getTempC())
-except (RuntimeError):
+except (IOError):
     print ("Failure to get Temperature")
 
 try:
     print ("Execute getHumidity")    
     print (getHumidity())
-except (RuntimeError):
+except (IOError):
     print ("Failure to get Humidity")
 
 try:
