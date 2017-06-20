@@ -72,6 +72,7 @@ Code follows the board number convention.
     - Right click on the file OpenAg-MVP-master.zip and select 'Extract Here', this will create a directory 'OpenAg-MVP-master that contains the files.
     - Drag the sub-directory 'OpenAg-MVP to the 'Documents' directory
     - Drag the sub-directory 'python' to the 'pi' directory
+    - if it does not already exist, create a sub-directory in OpenAg-MVP called "webcam".  This will hold the camera images.  If it does not exist, the cron job will fail.
 
 - Make webcam.sh executable
     - from the file manager, go to the /home/pi/Documents/OpenAg-MVP directory
