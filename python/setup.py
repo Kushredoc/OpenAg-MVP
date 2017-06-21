@@ -2,6 +2,6 @@
 
 from bookshelf import takeOffShelf, putOnShelf
 
-putOnShelf("targetTemp", 24)
+putOnShelf("targetTemp", 25)
 putOnShelf("priorFanOn", True)
 

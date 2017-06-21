@@ -7,7 +7,7 @@ try:
     adjustThermostat(temp)  
 except (IOError):
     print("Failure to get temperature, no sensor found; check pins and sensor")
-    logData("Temp", "Failure", "Sensor not found")
+    logData("si7921-top", "Failure", "temperature", "", "Sensor not found")
 
   
     

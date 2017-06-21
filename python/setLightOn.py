@@ -11,10 +11,10 @@ def setLightOn():
     lightPin = 29
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    print ("Turn lights on")
+    print ("Turn lights On")
     GPIO.setup(lightPin, GPIO.OUT)
     GPIO.output(lightPin, GPIO.HIGH)
-    logData("LightChange", "On", '')
+    logData("LightChange", "Success", "light", "On", '')
     
             
     

@@ -43,10 +43,10 @@ def adjustThermostat(temp):
     if currentFanOn != priorFanOn:
         print ("Fans not equal")
         if currentFanOn:
-            logData("Fan", "ON", "Current Temp: " + str(temp))
+            logData("Exhaust Fan", "Success", "switch", "ON", "Current Temp: " + str(temp))
             print("Fan change - fan ON")
         else:
-            logData("Fan", "OFF", "Current Temp: " + str(temp))
+            logData("Exhaust Fan", "Success", "switch", "OFF", "Current Temp: " + str(temp))
             print ("Fan change - fan OFF")
             
     putOnShelf(priorFanOnKey, currentFanOn)
