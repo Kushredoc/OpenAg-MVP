@@ -1,4 +1,8 @@
 # OpenAg-MVP
+
+## Changes
+6/21: Added logging of sensor data to CouchDB
+
 Code and instructions for building the 'brain' of the controled environment hydroponics unit.
 It is mostly a collection of python code that runs on a Raspberry Pi (or similar device).  See the OpenAg [forums](http://forum.openag.media.mit.edu/) for discussion and issues:
 
@@ -108,6 +112,33 @@ This logs the temperature and humidity every 20 minutes
 > 1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
 
 This takes an image every hour between 6am and 10pm; avoiding pictures when the lights are out.
+
+## CouchDB Install
+
+- Do the usual stuff before making changes
+
+> sudo apt-get update
+> sudo apt-get upgrade
+
+- build couchdb
+
+> sudo apt-get install couchdb -y
+
+The -y will accept all the questions with yes
+
+- Modify the default.ini initialization file to allow outside access
+
+> sudo leafpad /etc/couchdb/default.ini
+
+- Under HTTPD,change: binding_address = 0.0.0.0
+_ Reboot so this takes effect
+
+- Add a database to hold the sensor output
+
+> curl -X PUT http://localhost:5984/mvp_sensor_data
+
+- In the Python file: logData.py, uncomment the line for logDB
+
 
 ## Bill of Materials:
 - Raspberry Pi
