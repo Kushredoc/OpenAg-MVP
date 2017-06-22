@@ -15,6 +15,8 @@ def setLightOn():
     GPIO.setup(lightPin, GPIO.OUT)
     GPIO.output(lightPin, GPIO.HIGH)
     logData("LightChange", "Success", "light", "On", '')
+
+setLightOn()    
     
             
     
