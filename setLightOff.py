@@ -11,13 +11,12 @@ def setLightOff():
     lightPin = 29
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    print ("Turn lights off")
+    print ("Turn lights Off")
     GPIO.setup(lightPin, GPIO.OUT)
     GPIO.output(lightPin, GPIO.LOW)
-    logData("LightChange", "Off", '')
-
-setLightOff()
+    logData("Light_Switch", "Success", "light", "Off", '')
     
+setLightOff()
             
     
 
