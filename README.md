@@ -1,14 +1,12 @@
 # OpenAg-MVP
-
-## Changes
-6/21: Added logging of sensor data to CouchDB
-
 Code and instructions for building the 'brain' of the controled environment hydroponics unit.
 It is mostly a collection of python code that runs on a Raspberry Pi (or similar device).  See the OpenAg [forums](http://forum.openag.media.mit.edu/) for discussion and issues:
 
-
 The MVP (Minimal Viable Product) is a simplified version of the MIT OpenAg Food Computer.
 
+##Changes
+
+6/21: Added logging of sensor data to CouchDB
 
 ## Architecture:
 The MVP brain is mostly python scripts involed using cron as the scheduler.  
@@ -117,8 +115,9 @@ This takes an image every hour between 6am and 10pm; avoiding pictures when the 
 
 - Do the usual stuff before making changes
 
-> sudo apt-get update
-> sudo apt-get upgrade
+>sudo apt-get update
+
+- Don't run an upgrade (sudo apt-get upgrade).  Some of the Python code is version 2, and the upgrade will leave you only with version 3; so some of the code will break.  Leave things alone so version 2 will be happy.
 
 - build couchdb
 
@@ -126,19 +125,17 @@ This takes an image every hour between 6am and 10pm; avoiding pictures when the 
 
 The -y will accept all the questions with yes
 
-- Modify the default.ini initialization file to allow outside access
+Modify the default.ini initialization file to allow outside access
 
 > sudo leafpad /etc/couchdb/default.ini
 
-- Under HTTPD,change: binding_address = 0.0.0.0
-_ Reboot so this takes effect
+_ Under HTTPD,change: binding_address = 0.0.0.0 _ Reboot so this takes effect
 
-- Add a database to hold the sensor output
+Add a database to hold the sensor output
 
 > curl -X PUT http://localhost:5984/mvp_sensor_data
 
-- In the Python file: logData.py, uncomment the line for logDB
-
+In the Python file: logData.py, uncomment the line for logDB
 
 ## Bill of Materials:
 - Raspberry Pi
@@ -148,8 +145,32 @@ _ Reboot so this takes effect
 - Relay
 
 ## Testing:
-Individual files can be loaded and the functions called from the command line.  Follow the basic Python code testing processes.
+Individual files can be loaded into Python (double click on the file) and the functions called from the command line.  Follow the basic Python code testing processes.
 testScript.py will go through the main functions and run them.  There should be no exceptions, though you will see errors if the si7021 sensor is not correctly wired.
+
+The commands in the crontab file can be run from a command line window:
+
+> python /home/pi/python/adjustThermostat.py
+> python /home/pi/python/setLightOn.py
+> python /home/pi/python/setLightOff.py
+> python /home/pi/python/logSensors.py
+> /home/pi/Documents/OpenAg-MVP/webcam.sh
+
+## DS18B20 thermometer (optional)
+
+This is a One-Wire sensor.  Follow instructions at:
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing
+This is more than Python code, you need to:
+Add the following to /boot/config.txt
+
+> dtoverlay=w1-gpio
+
+Then reboot your Raspberry
+Then execute the following commands:
+
+> sudo modprobe w1-gpio
+> sudo modprobe w1-therm
+
 
 ## To Do:
 1. Add exception handling to the Python code
