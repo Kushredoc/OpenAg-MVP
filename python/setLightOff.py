@@ -16,6 +16,8 @@ def setLightOff():
     GPIO.output(lightPin, GPIO.LOW)
     logData("Light_Switch", "Success", "light", "Off", '')
     
+setLightOff()  
+    
             
     
 
