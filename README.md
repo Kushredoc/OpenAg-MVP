@@ -7,6 +7,7 @@ The MVP (Minimal Viable Product) is a simplified version of the MIT OpenAg Food 
 ##Changes
 
 6/21: Added logging of sensor data to CouchDB
+7/6/2017 NOTE: webcam.sh is being moved to OpenAg_MVP_UI directory.  This move requires a change to crontab
 
 ## Architecture:
 The MVP brain is mostly python scripts involed using cron as the scheduler.  
@@ -107,9 +108,10 @@ Turns lights off at 10:30PM (change for your needs)
 
 This logs the temperature and humidity every 20 minutes
 
-> 1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
+> 1 6-22 * * * /home/pi/Documents/OpenAg_MVP_UI/webcam.sh
 
 This takes an image every hour between 6am and 10pm; avoiding pictures when the lights are out.
+NOTE: This is a change of where the sh file is from the original version
 
 ## CouchDB Install
 
