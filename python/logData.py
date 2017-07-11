@@ -10,7 +10,7 @@ def logData(name, status, attribute, value, comment):
     logDB(timestamp, name, status, attribute, value, comment)
     
 def logFile(timestamp, name, status, attribute, value, comment):
-    f = open('/home/pi/MVP_Brain/data.txt', 'a')
+    f = open('/home/pi/Documents/OpenAg-MVP/data.txt', 'a')
     s= timestamp + ", " + name + ", " + status + ", " + attribute + ", " + value + "," + comment + "\n"
     print(s)
     f.write(s)
