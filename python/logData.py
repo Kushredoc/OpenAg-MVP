@@ -28,6 +28,3 @@ def logDB(timestamp, name, status, attribute, value, comment):
     headers = {'content-type': 'application/json'}
     r = requests.post('http://localhost:5984/mvp_sensor_data', data = json_data, headers=headers)
     print(r.json())
-
-#Uncomment to test this function
-#logData(_si7021, _Success, _temperature, '27', '')    
