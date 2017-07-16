@@ -127,12 +127,6 @@ NOTE: This is a change of where the sh file is from the original version
 
 ## CouchDB Install
 
-- Do the usual stuff before making changes
-
->sudo apt-get update
-
-- Don't run an upgrade (sudo apt-get upgrade).  Some of the Python code is version 2, and the upgrade will leave you only with version 3; so some of the code will break.  Leave things alone so version 2 will be happy.
-
 - build couchdb
 
 > sudo apt-get install couchdb -y
@@ -143,13 +137,18 @@ Modify the default.ini initialization file to allow outside access
 
 > sudo leafpad /etc/couchdb/default.ini
 
-_ Under HTTPD,change: binding_address = 0.0.0.0 _ Reboot so this takes effect
+  - Click the "Search" then "Find" menu and type HTTPD, and click the "Find" button.
+  - Under the HTTPD line,change binding address to: binding_address = 0.0.0.0
+  - Click "File" and "Save", then exit the editor.
+  - Reboot so this takes effect (From the Main menu, click "Shutdown" and on the sub-menu click "Reboot"
 
 Add a database to hold the sensor output
 
 > curl -X PUT http://localhost:5984/mvp_sensor_data
 
-In the Python file: logData.py, uncomment the line for logDB
+## Test The New System
+
+  - All should be up and running, but run the test script to make sure:
 
 ## Bill of Materials:
 - Raspberry Pi
