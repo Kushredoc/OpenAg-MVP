@@ -8,6 +8,7 @@ The MVP (Minimal Viable Product) is a simplified version of the MIT OpenAg Food 
 
 6/21: Added logging of sensor data to CouchDB
 7/6/2017 NOTE: webcam.sh is being moved to OpenAg_MVP_UI directory.  This move requires a change to crontab
+7/16/2017 Update documentation, minor corrections
 
 ## Architecture:
 The MVP brain is mostly python scripts involed using cron as the scheduler.  
@@ -23,7 +24,6 @@ The Python is modular so additions and changes can easily be made without affect
     - Check Temperature (adjustThermostat.py)
 
 shelf is used for persisting variables (target temperature, prior fan state).  These variables must be initialized before the python code will correctly run, this is done by running the Python file /home/pi/python.setup.py.
-**NOTE** In my setup, the python icon runs version 3, while clicking a file runs 2.7.9; due to significant differences between versions you have to have consistency with what is run.
 
 Data storage is in a csv formatted (without header) flat file (/home/pi/Documents/OpenAg-MVP/data.txt)
 
@@ -65,14 +65,25 @@ Code follows the board number convention.
     - I2C has been enabled
 2. 32G SD card to hold data
 3. Sensors and relay are wired to the Pi.  If you try to run the code without sensors, some of it will error out (I/O Error, I noticed in the getTempC() function).  This will ripple up to error out the cron job for logSensorData.py.
-
+>
 ### Software Build Steps
 
- - Install fswebcam
+Open this file in your Raspberry Pi so you can cut and paste command line instructions and cron commands.  Highlight the line you want and use Ctl-C to copy it.  On the Terminal window click on "Edit" and select "Paste" (terminal windows don't use the standard Ctl-V to paste). 
+
+- Update the software:
+
+> sudo apt-get update
+
+- Upgrade the software, this should default you to running Python 3
+
+> sudo apt-get upgrade
+
+- Install fswebcam
 > sudo apt-get install fswebcam
 
-- Download code from [Github](https://github.com/webbhm/OpenAg-MVP).  Click on the zip file to open it, and move the files to the appropriate location.
+- Download the zip file of code from [Github](https://github.com/webbhm/OpenAg-MVP).  Open a file browser and go to Downloads.  You should find the zip file (OpenAg-MVP-master.zip) here. Right click on the zip file to open it, and move the files to the appropriate location.
     - Right click on the file OpenAg-MVP-master.zip and select 'Extract Here', this will create a directory 'OpenAg-MVP-master that contains the files.
+    - Click on the new directory (OpenAg-MVP-master) to open it
     - Drag the sub-directory 'OpenAg-MVP to the 'Documents' directory
     - Drag the sub-directory 'python' to the 'pi' directory
     - if it does not already exist, create a sub-directory in OpenAg-MVP called "webcam".  This will hold the camera images.  If it does not exist, the cron job will fail.
@@ -81,11 +92,12 @@ Code follows the board number convention.
     - from the file manager, go to the /home/pi/Documents/OpenAg-MVP directory
     - right click on webcam.sh and select Properties from the menu
     - select the Permissions tab, and on the Execute drop-down select 'Anyone' and hit 'OK'
+    
+- initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
 
 - initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
-**NOTE** There needs to be an easier way to set-up cron for new people.  The slightest typo will cause it to either not run, or run with errors.  Google cron to see how to change the time settings.  These will get you going, but you will likely want to change them at some time in the future.
 
-- From a terminal, type:
+- Open a terminal window and type:
 
 > crontab -e
 
