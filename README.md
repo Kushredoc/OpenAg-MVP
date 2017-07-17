@@ -68,6 +68,13 @@ Code follows the board number convention.
 >
 ### Software Build Steps
 
+NOTE:
+Different builds/downloads of NOOBS seem to have different versions of Python set up as default, though both are likely installed, and the IDE for 2 and 3 are in the programming menu.  This code will work with 2 or 3, but you cannot switch back and forth.  Check which version is the default for your system and stick with it.  To find which version you default to, open a terminal window and type:
+
+```python```
+
+This will display the version number on the first line.  It will also put you into a Python command line - press CTL-D to exit it.
+
 Open this file in your Raspberry Pi so you can cut and paste command line instructions and cron commands.  Highlight the line you want and use Ctl-C to copy it.  On the Terminal window click on "Edit" and select "Paste" (terminal windows don't use the standard Ctl-V to paste). 
 
 - Update the software:
