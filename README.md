@@ -102,7 +102,7 @@ Open this file in your Raspberry Pi so you can cut and paste command line instru
     
 - initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
 
-- initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
+NOTE: There are issues with shelf and version compatability (different storage types in diffrent versions).  If after initializing shelf you find errors regarding "db type", you likely initialized with one version of Python, and are running a different one.  The solution is to note the version your code defaults to running, delete /home/pi/python/bookshelf.db, and re-run the setup.py with the default version.
 
 - Open a terminal window and type:
 
