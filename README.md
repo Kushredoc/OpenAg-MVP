@@ -104,10 +104,10 @@ Open this file in your Raspberry Pi so you can cut and paste command line instru
 
 NOTE: There are issues with shelf and version compatability (different storage types in diffrent versions).  If after initializing shelf you find errors regarding "db type", you likely initialized with one version of Python, and are running a different one.  The solution is to note the version your code defaults to running, delete /home/pi/python/bookshelf.db, and re-run the setup.py with the default version.
 
+NOTE: The crontab editor is old and works different from most newer editors (it is command line oriented, and pre-dates graphical interfaces).  To save the file you type Ctl-X, they type 'y' to confirm that you want to save the file.
+
 - Open a terminal window and type:
-
 > crontab -e
-
 - Select the second editor option
 - Scroll to the bottom of the file and type the following:
 
@@ -175,22 +175,6 @@ The commands in the crontab file can be run from a command line window:
 > python /home/pi/python/setLightOff.py
 > python /home/pi/python/logSensors.py
 > /home/pi/Documents/OpenAg-MVP/webcam.sh
-
-## DS18B20 thermometer (optional)
-
-This is a One-Wire sensor.  Follow instructions at:
-https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing
-This is more than Python code, you need to:
-Add the following to /boot/config.txt
-
-> dtoverlay=w1-gpio
-
-Then reboot your Raspberry
-Then execute the following commands:
-
-> sudo modprobe w1-gpio
-> sudo modprobe w1-therm
-
 
 ## To Do:
 1. Add exception handling to the Python code
