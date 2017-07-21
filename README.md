@@ -104,33 +104,25 @@ Open this file in your Raspberry Pi so you can cut and paste command line instru
 
 NOTE: There are issues with shelf and version compatability (different storage types in diffrent versions).  If after initializing shelf you find errors regarding "db type", you likely initialized with one version of Python, and are running a different one.  The solution is to note the version your code defaults to running, delete /home/pi/python/bookshelf.db, and re-run the setup.py with the default version.
 
-NOTE: The crontab editor is old and works different from most newer editors (it is command line oriented, and pre-dates graphical interfaces).  To save the file you type Ctl-X, they type 'y' to confirm that you want to save the file.
+NOTE: The crontab editor is old and works different from most newer editors (it is command line oriented, and pre-dates graphical interfaces).  To save the file you type Ctl-X, they type 'y' to confirm that you want to save the file.  Read the key commands at the bottom of the editor.
 
 - Open a terminal window and type:
 > crontab -e
 - Select the second editor option
-- Scroll to the bottom of the file and type the following:
+- Scroll to the bottom of the file and cut & paste the following:
 
-> */1 * * * * python /home/pi/python/adjustThermostat.py
-
-This checks the temperature and adjusts the fan every minute
-
-> 0 6 * * * python /home/pi/python/setLightOn.py
-
-Turns lights on at 6AM (change for your needs)
-
-> 30 22 * * * python /home/pi/python/setLightOff.py
-
-Turns lights off at 10:30PM (change for your needs)
-
-> */20 * * * * python /home/pi/python/logSensors.py
-
-This logs the temperature and humidity every 20 minutes
-
-> 1 6-22 * * * /home/pi/Documents/OpenAg_MVP_UI/webcam.sh
-
-This takes an image every hour between 6am and 10pm; avoiding pictures when the lights are out.
-NOTE: This is a change of where the sh file is from the original version
+```
+*/1 * * * * python /home/pi/MVP/python/adjustThermostat.py
+0 6 * * * python /home/pi/MVP/python/setLightOn.py
+30 22 * * * python /home/pi/MVP/python/setLightOff.py
+*/20 * * * * python /home/pi/MVP/python/logSensors.py
+1 6-22 * * * /home/pi/MVP/scripts/webcam.sh
+```
+- adjustThermostat checks the temperature and adjusts the fan every minute
+- setLightOn turns lights on at 6AM (change for your needs)
+- setLightOff turns lights off at 10:30PM (change for your needs)
+- logSensors writes out the temperature and humidity every 20 minutes
+- webcam.sh takes an image every hour between 6am and 10pm; avoiding pictures when the lights are out.
 
 ## CouchDB Install
 
