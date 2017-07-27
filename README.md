@@ -116,7 +116,7 @@ NOTE: The crontab editor is old and works different from most newer editors (it 
 0 6 * * * python /home/pi/python/setLightOn.py
 30 22 * * * python /home/pi/python/setLightOff.py
 */20 * * * * python /home/pi/python/logSensors.py
-1 6-22 * * * /home/pi/Documents/MVP_Brain/scripts/webcam.sh
+1 6-22 * * * /home/pi/Documents/OpenAg-MVP/scripts/webcam.sh
 ```
 - adjustThermostat checks the temperature and adjusts the fan every minute
 - setLightOn turns lights on at 6AM (change for your needs)
