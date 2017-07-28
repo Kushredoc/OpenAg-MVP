@@ -10,6 +10,7 @@ printf "\n---Check for directories---\n"
 
 main_dir=/home/pi/Documents/OpenAg-MVP
 ui_dir=/home/pi/MVP_UI
+python_dir=/home/pi/python
 
 dir=$main_dir
 cd  $dir &> /dev/null
@@ -20,7 +21,7 @@ else
     printf "${RED}$dir not found, extract from Github${NC}\n"
 fi
 
-dir=$main_dir/scripts
+dir=$main_dir/setup
 cd  $dir &> /dev/null
 if [ $? = 0 ]
 then
@@ -63,9 +64,20 @@ else
     printf "${RED}Design doc not installed${NC}\n"
 fi
 
+printf "\n---Test Variable Persistence---\n"
+
+cmd=$python_dir/testShelf.py
+python $cmd &> /dev/null
+if [ $? = 0 ]
+then
+    printf "Variable Persistence OK\n"
+else
+    printf "${RED}$cmd not working or not installed${NC}\n"
+fi
+
 printf "\n---Test Sensors---\n"
 
-cmd=$main_dir/python/testSI7021.py
+cmd=$python_dir/testSI7021.py
 python $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -76,7 +88,7 @@ fi
 
 printf "\n---Test Data Logger---\n"
 
-cmd=$main_dir/python/logSensors.py
+cmd=$python_dir/logSensors.py
 python $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -92,7 +104,7 @@ read -p "Press Enter to continue"
 
 printf "\n---Test Actuators---\n"
 
-cmd=$main_dir/python/testThermostat.py
+cmd=$python_dir/testThermostat.py
 python $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -101,7 +113,7 @@ else
     printf "${RED}$cmd not working or not installed${NC}\n"
 fi
 
-cmd=$main_dir/python/setLightOff.py
+cmd=$python_dir/setLightOff.py
 python $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -110,7 +122,7 @@ else
     printf "${RED}$cmd not working or not installed${NC}\n"
 fi
 
-cmd=$main_dir/python/setLightOn.py
+cmd=$python_dir/setLightOn.py
 python $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -119,7 +131,7 @@ else
     printf "${RED}$cmd not working or not installed${NC}\n"
 fi
 
-cmd=$main_dir/scripts/webcam.sh
+cmd=$main_dir/webcam.sh
 bash $cmd &> /dev/null
 if [ $? = 0 ]
 then
@@ -130,7 +142,7 @@ fi
 
 printf "\n---Building website, if you got this far, there is some data---\n"
 
-cmd=$main_dir/scripts/render.sh
+cmd=$ui_dir/scripts/render.sh
 bash $cmd &> /dev/null
 if [ $? = 0 ]
 then
