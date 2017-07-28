@@ -147,6 +147,7 @@ Add a database to hold the sensor output
 
 ## Test The New System
 
+  - See the [wiki](https://wiki.openag.media.mit.edu/mvp_debugging) for more details.
   - There is a validation script that goes through almost all of the systems, starting low level with the sensors and working up through the actuators and finally the UI (it is assumed the UI has also been installed.  The script stops part way through (after logging data) so you can look at the output for logging data errors.  After scrolling through the output, press "ENTER" to continue the script.  You will be back at a command prompt when it finishes.
   - To run the script, from a terminal window type:
 
