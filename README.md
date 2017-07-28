@@ -147,7 +147,17 @@ Add a database to hold the sensor output
 
 ## Test The New System
 
-  - All should be up and running, but run the test script to make sure:
+  - There is a validation script that goes through almost all of the systems, starting low level with the sensors and working up through the actuators and finally the UI (it is assumed the UI has also been installed.  The script stops part way through (after logging data) so you can look at the output for logging data errors.  After scrolling through the output, press "ENTER" to continue the script.  You will be back at a command prompt when it finishes.
+  - To run the script, from a terminal window type:
+
+> bash /home/pi/Documents/OpenAg-MVP/scripts/Validation.sh
+
+  - This file should run with NO ERRORS.  If any errors are found (indicated by the RED font), then start with the first one,  fix it, and re-run the validation script.  Repeat this process until there are no errors.
+  - This script will generate data to the database and take a picture, so the UI charts should have at least one data point when you look at them.  From a browser on the Raspberry Pi, enter:
+  
+> http://localhost:8000
+
+  - If you are seeing data in the charts, and a picture, then you have successfully built and installed the MVP, and are up and running!!
 
 ## Bill of Materials:
 - Raspberry Pi
@@ -155,18 +165,6 @@ Add a database to hold the sensor output
 - SI7021 temperature/humidity sensor
 - Wire or jumpers
 - Relay
-
-## Testing:
-Individual files can be loaded into Python (double click on the file) and the functions called from the command line.  Follow the basic Python code testing processes.
-testScript.py will go through the main functions and run them.  There should be no exceptions, though you will see errors if the si7021 sensor is not correctly wired.
-
-The commands in the crontab file can be run from a command line window:
-
-> python /home/pi/python/adjustThermostat.py
-> python /home/pi/python/setLightOn.py
-> python /home/pi/python/setLightOff.py
-> python /home/pi/python/logSensors.py
-> /home/pi/Documents/OpenAg-MVP/webcam.sh
 
 ## To Do:
 1. Add exception handling to the Python code
