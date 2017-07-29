@@ -159,6 +159,9 @@ Add a database to hold the sensor output
 > http://localhost:8000
 
   - If you are seeing data in the charts, and a picture, then you have successfully built and installed the MVP, and are up and running!!
+  
+## Final Step ##
+  - Now that you have it running, make a backup SD card.  Install a blank SD card (or one that you don't mind being erased) into a USB card reader, and put it into one of the Raspberry Pi's USB ports.  From the main Raspberry menu select "Accessories", then "SD Card Copier". Under "Copy To Device" select the card (usually the second one) and click "Start".  It will take a couple of minutes, but you now have another good copy of the software.
 
 ## Bill of Materials:
 - Raspberry Pi
