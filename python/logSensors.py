@@ -1,7 +1,6 @@
 #Check sensors and log to file
 from si7021 import getTempC, getHumidity
 from logData import logData
-from ds18B29 import getTempC as getTempC_ds
 
 try:
     temp = getTempC()
