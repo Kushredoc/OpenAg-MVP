@@ -9,6 +9,7 @@ The MVP (Minimal Viable Product) is a simplified version of the MIT OpenAg Food 
 6/21: Added logging of sensor data to CouchDB
 7/6/2017 NOTE: webcam.sh is being moved to OpenAg_MVP_UI directory.  This move requires a change to crontab
 7/16/2017 Update documentation, minor corrections
+7/26/2017 Added validation script for release testing
 
 ## Architecture:
 The MVP brain is mostly python scripts involed using cron as the scheduler.  
@@ -153,7 +154,11 @@ Add a database to hold the sensor output
 
 > bash /home/pi/Documents/OpenAg-MVP/setup/Validate.sh
 
-  - This file should run with NO ERRORS.  If any errors are found (indicated by the RED font), then start with the first one,  fix it, and re-run the validation script.  Repeat this process until there are no errors.
+NOTE"The Validation script (and all *.sh shell scripts) neet to have their permissions set so they are executable.  From the file browser, go to MVP/setup and right mouse click on validate.sh, from the drop down menu select "Properties".  In the "File Properties" window select the "Permissions" tab.  Select "Anyone" for the "Execute" property.  If you are working from the command line, and not from a GUI, then use the following:
+
+> sudo chmod 755 home/pi/MVP/setup/Validate.sh
+
+- This file should run with NO ERRORS.  If any errors are found (indicated by the RED font), then start with the first one,  fix it, and re-run the validation script.  Repeat this process until there are no errors.
   - This script will generate data to the database and take a picture, so the UI charts should have at least one data point when you look at them.  From a browser on the Raspberry Pi, enter:
   
 > http://localhost:8000
