@@ -80,11 +80,11 @@ Open this file in your Raspberry Pi so you can cut and paste command line instru
 
 - Update the software:
 
-> sudo apt-get update
+> sudo apt-get update -y
 
 - Upgrade the software, this should default you to running Python 3
 
-> sudo apt-get upgrade
+> sudo apt-get upgrade -y
 
 - Install fswebcam
 > sudo apt-get install fswebcam
@@ -101,7 +101,7 @@ Open this file in your Raspberry Pi so you can cut and paste command line instru
     - right click on webcam.sh and select Properties from the menu
     - select the Permissions tab, and on the Execute drop-down select 'Anyone' and hit 'OK'
     
-- initialized shelf with the persistent variables.  Double click on the file /home/pi/pythin/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
+- initialized shelf with the persistent variables.  Double click on the file /home/pi/python/setup.py, and Python will open.  Click on Run menu, then Run Module sub-menu and run the file.
 
 NOTE: There are issues with shelf and version compatability (different storage types in diffrent versions).  If after initializing shelf you find errors regarding "db type", you likely initialized with one version of Python, and are running a different one.  The solution is to note the version your code defaults to running, delete /home/pi/python/bookshelf.db, and re-run the setup.py with the default version.
 
@@ -117,7 +117,7 @@ NOTE: The crontab editor is old and works different from most newer editors (it 
 0 6 * * * python /home/pi/python/setLightOn.py
 30 22 * * * python /home/pi/python/setLightOff.py
 */20 * * * * python /home/pi/python/logSensors.py
-1 6-22 * * * /home/pi/Documents/OpenAg-MVP/scripts/webcam.sh
+1 6-22 * * * /home/pi/Documents/OpenAg-MVP/webcam.sh
 ```
 - adjustThermostat checks the temperature and adjusts the fan every minute
 - setLightOn turns lights on at 6AM (change for your needs)
@@ -138,7 +138,7 @@ Modify the default.ini initialization file to allow outside access
 > sudo leafpad /etc/couchdb/default.ini
 
   - Click the "Search" then "Find" menu and type HTTPD, and click the "Find" button.
-  - Under the HTTPD line,change binding address to: binding_address = 0.0.0.0
+  - Under the HTTPD line,change binding address to: bind_address = 0.0.0.0
   - Click "File" and "Save", then exit the editor.
   - Reboot so this takes effect (From the Main menu, click "Shutdown" and on the sub-menu click "Reboot"
 
@@ -147,6 +147,8 @@ Add a database to hold the sensor output
 > curl -X PUT http://localhost:5984/mvp_sensor_data
 
 ## Test The New System
+
+NOTE: The validation script assumes you have installed the [UI](ttps://github.com/webbhm/OpenAg_MVP_UI).  You will see errors if the UI in not installed.
 
   - See the [wiki](https://wiki.openag.media.mit.edu/mvp_debugging) for more details.
   - There is a validation script that goes through almost all of the systems, starting low level with the sensors and working up through the actuators and finally the UI (it is assumed the UI has also been installed.  The script stops part way through (after logging data) so you can look at the output for logging data errors.  After scrolling through the output, press "ENTER" to continue the script.  You will be back at a command prompt when it finishes.
