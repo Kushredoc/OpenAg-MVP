@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from datetime import tzinfo, datetime
 import requests
 import json
