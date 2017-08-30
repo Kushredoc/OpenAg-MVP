@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from thermostat import adjustThermostat
 from si7021 import getTempC
 from logData import logData
