@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 #Light Control
 #Controls the turning on and turning off of lights
 #Lights are wired into Relay #4 (Pin 29)
