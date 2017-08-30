@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 #Check sensors and log to file
 from si7021 import getTempC, getHumidity
 from logData import logData
