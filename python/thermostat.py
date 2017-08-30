@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 #thermostat.py
 #controlls the exhaust fan, turns it on when temperature is over the target temperature
 #Fan is assumed to be wired to Pin 33 (GPIO 13)
