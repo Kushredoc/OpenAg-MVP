@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Distributed with a free-will license.
 # Use it any way you want, profit or free, provided it fits in the licenses of its associated works.
 # SI7021
