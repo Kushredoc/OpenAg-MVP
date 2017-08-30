@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 #routines to persist variables between executions
 #data is stored in a file
 #protocol must be stated due to conflicts between Python 2 and 3
